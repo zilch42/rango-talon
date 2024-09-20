@@ -25,9 +25,9 @@ flick <user.rango_target>:
 tab marker refresh: user.rango_command_without_target("refreshTabMarkers")
 
 # Open in a new tab
-blank <user.rango_target>:
+new tab <user.rango_target>:
   user.rango_command_with_target("openInNewTab", rango_target)
-stash <user.rango_target>:
+background <user.rango_target>:
   user.rango_command_with_target("openInBackgroundTab", rango_target)
 
 # Navigation
@@ -50,20 +50,20 @@ tab ahead: user.rango_command_without_target("cycleTabsByText", 1)
 tab behind: user.rango_command_without_target("cycleTabsByText", -1)
 
 # Close tabs
-tab close other: user.rango_command_without_target("closeOtherTabsInWindow")
-tab close left: user.rango_command_without_target("closeTabsToTheLeftInWindow")
-tab close right: user.rango_command_without_target("closeTabsToTheRightInWindow")
-tab close first [<number_small>]:
+close other tabs: user.rango_command_without_target("closeOtherTabsInWindow")
+close tab left: user.rango_command_without_target("closeTabsToTheLeftInWindow")
+close tab right: user.rango_command_without_target("closeTabsToTheRightInWindow")
+close tab first [<number_small>]:
   user.rango_command_without_target("closeTabsLeftEndInWindow", number_small or 1)
-tab close final [<number_small>]:
+close tab final [<number_small>]:
   user.rango_command_without_target("closeTabsRightEndInWindow", number_small or 1)
-tab close previous [<number_small>]:
+close tab previous [<number_small>]:
   user.rango_command_without_target("closePreviousTabsInWindow", number_small or 1)
-tab close next [<number_small>]:
+close tab next [<number_small>]:
   user.rango_command_without_target("closeNextTabsInWindow", number_small or 1)
 
 # Clone tab
-tab clone: user.rango_command_without_target("cloneCurrentTab")
+duplicate tab: user.rango_command_without_target("cloneCurrentTab")
 
 # Hover
 hover <user.rango_target>:
@@ -79,12 +79,12 @@ hide <user.rango_target>:
   user.rango_command_with_target("hideHint", rango_target)
 
 # Scroll
-upper: user.rango_command_without_target("scrollUpPage")
+upper|(half up): user.rango_command_without_target("scrollUpPage")
 upper <number>: user.rango_command_without_target("scrollUpPage", number)
 upper all: user.rango_command_without_target("scrollUpPage", 9999)
 tiny up: user.rango_command_without_target("scrollUpPage", 0.2)
 
-downer: user.rango_command_without_target("scrollDownPage")
+downer|(half down): user.rango_command_without_target("scrollDownPage")
 downer <number>: user.rango_command_without_target("scrollDownPage", number)
 downer all: user.rango_command_without_target("scrollDownPage", 9999)
 tiny down: user.rango_command_without_target("scrollDownPage", 0.2)
@@ -208,9 +208,9 @@ custom hints reset: user.rango_command_without_target("resetCustomSelectors")
 # Show and hide hints
 hints refresh: user.rango_command_without_target("refreshHints")
 hints (toggle | switch): user.rango_command_without_target("toggleHints")
-hints on [{user.rango_hints_toggle_levels}]: 
+hints (on|show) [{user.rango_hints_toggle_levels}]: 
   user.rango_command_without_target("enableHints", rango_hints_toggle_levels or "global")
-hints off [{user.rango_hints_toggle_levels}]: 
+hints (off|hide) [{user.rango_hints_toggle_levels}]: 
   user.rango_command_without_target("disableHints", rango_hints_toggle_levels or "global")
 hints reset {user.rango_hints_toggle_levels}: 
   user.rango_command_without_target("resetToggleLevel", rango_hints_toggle_levels)
